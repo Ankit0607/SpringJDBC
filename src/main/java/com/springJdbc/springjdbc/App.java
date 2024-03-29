@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.springJdbc.dao.studentDaoImpl;
+import com.springJdbc.dao.studentdao;
 import com.springJdbc.entities.student;
 
 /**
@@ -17,7 +18,7 @@ public class App {
 		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext("com/springJdbc/springjdbc/config.xml");
 		studentDaoImpl bean = (studentDaoImpl) context.getBean("studentDao");
-		
+
 		// -- insert data into Db
 		student student = new student();
 		student.setId(123);
@@ -37,12 +38,15 @@ public class App {
 		int res1 = bean.update(student1);
 
 		System.out.println("Number of rows updated : " + res1);
-		
-		
+
 		/* ---- Delete Operation -------- */
 		int res2 = bean.delete(123);
-		
-		System.out.println("Number of rows deleted : "+res2);
-		
+
+		System.out.println("Number of rows deleted : " + res2);
+
+		/*--------*/
+		student student3 = bean.getStudent(121);
+
+		System.out.println(student3);
 	}
 }
