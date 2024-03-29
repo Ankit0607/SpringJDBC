@@ -50,12 +50,10 @@ public class studentDaoImpl implements studentdao {
 		return student;
 	}
 
-
-	@SuppressWarnings("unchecked")
 	public List<student> getAllStudent() {
 		String query = "select * from student";
 		RowMapper<student> rowMapper = new rowMapperImpl();
-		List<student> student =  (List<student>)this.jdbctmpl.query(query, rowMapper);
+		List<student> student = (List<student>) this.jdbctmpl.query(query, rowMapper);
 		return student;
 	}
 

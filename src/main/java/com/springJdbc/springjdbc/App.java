@@ -3,27 +3,30 @@ package com.springJdbc.springjdbc;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.springJdbc.dao.jdbcConfig;
 import com.springJdbc.dao.studentDaoImpl;
 import com.springJdbc.dao.studentdao;
 import com.springJdbc.entities.student;
 
-/**
- * Hello world!
- *
- */
 public class App {
 	public static void main(String[] args) {
 		System.out.println("Hey It's started now ..... :) :)");
 
-		@SuppressWarnings("resource")
-		ApplicationContext context = new ClassPathXmlApplicationContext("com/springJdbc/springjdbc/config.xml");
-		studentDaoImpl bean = (studentDaoImpl) context.getBean("studentDao");
+		/*---- Used for enabling the xml config file only ----*/
+//		@SuppressWarnings("resource")
+//		ApplicationContext context = new ClassPathXmlApplicationContext("com/springJdbc/springjdbc/config.xml");
+//		studentDaoImpl bean = (studentDaoImpl) context.getBean("studentDao");
+		
+		/*---- Used for enabling java config class only----*/
+		ApplicationContext context = new AnnotationConfigApplicationContext(jdbcConfig.class);
+		studentdao bean = (studentdao) context.getBean("studentDao", studentdao.class);
 
 		/*---- insert data into Db ----*/
 		student student = new student();
-		student.setId(123);
+		student.setId(12321);
 		student.setName("Mohan");
 		student.setCity("Vrindavan");
 
@@ -47,13 +50,13 @@ public class App {
 		/*---- selecting column using row mapper ----*/
 		student student3 = bean.getStudent(121);
 		System.out.println(student3);
-		
+
 		/*--- selecting All the student form the Db using the row mapper class ---*/
-		List<student> student4 =  bean.getAllStudent();
-		
+		List<student> student4 = bean.getAllStudent();
+
 		for (student s : student4) {
 			System.out.println(s);
 		}
-		
+
 	}
 }
