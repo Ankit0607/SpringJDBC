@@ -3,11 +3,13 @@ package com.springJdbc.dao;
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @Configuration
+@ComponentScan("com.springJdbc.dao")
 public class jdbcConfig {
 	@Bean(name = {"ds"})
 	public DataSource getDataSource() {
@@ -26,11 +28,12 @@ public class jdbcConfig {
 		return jdbcTemplate;
 	}
 	
-	@Bean(name = {"studentDao"})
-	public studentdao getStudentDao() {
-		studentDaoImpl studentDao = new studentDaoImpl();
-		studentDao.setJdbctmpl(getTemplate());
-		return studentDao;
-	}
+	/*----No need for this code as we are using the component ----*/
+//	@Bean(name = {"studentDao"})
+//	public studentdao getStudentDao() {
+//		studentDaoImpl studentDao = new studentDaoImpl();
+//		studentDao.setJdbctmpl(getTemplate());
+//		return studentDao;
+//	}
 
 }

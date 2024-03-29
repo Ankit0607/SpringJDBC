@@ -2,20 +2,25 @@ package com.springJdbc.dao;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import com.springJdbc.entities.student;
 
+@Component("studentDao")
 public class studentDaoImpl implements studentdao {
 
 	// generate getter & settet method of this variable to write the object
+	@Autowired
 	private JdbcTemplate jdbctmpl;
 
 	public JdbcTemplate getJdbctmpl() {
 		return jdbctmpl;
 	}
 
+	@Autowired
 	public void setJdbctmpl(JdbcTemplate jdbctmpl) {
 		this.jdbctmpl = jdbctmpl;
 	}
