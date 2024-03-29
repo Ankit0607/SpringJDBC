@@ -31,4 +31,14 @@
 		</property>
 	</bean>
 
+	<!-- <bean class="com.springJdbc.dao.studentDaoImpl" name="studentDao">
+		<property ref="jdbcTemplate" name="studentdao" />
+	</bean> -->
+
+	<bean class="com.springJdbc.dao.studentDaoImpl" name="studentDao">
+		<property name="jdbctmpl" ref="jdbcTemplate" /> <!-- Here the name will
+		come from the class jdbcTemplate object & ref will come from the bean
+		above-->
+	</bean>
+
 </beans>
