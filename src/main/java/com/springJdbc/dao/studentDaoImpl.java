@@ -32,4 +32,11 @@ public class studentDaoImpl implements studentdao {
 		return r;
 	}
 
+	@Override
+	public int delete(int studentId) {
+		String query = "delete from student where id = ?";
+		int r = this.jdbctmpl.update(query, studentId);
+		return r;
+	}
+
 }

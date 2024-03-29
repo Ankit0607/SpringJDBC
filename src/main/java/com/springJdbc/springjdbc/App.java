@@ -37,5 +37,12 @@ public class App {
 		int res1 = bean.update(student1);
 
 		System.out.println("Number of rows updated : " + res1);
+		
+		
+		/* ---- Delete Operation -------- */
+		int res2 = bean.delete(123);
+		
+		System.out.println("Number of rows deleted : "+res2);
+		
 	}
 }
